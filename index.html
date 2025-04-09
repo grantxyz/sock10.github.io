@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard</title>
+    <style>
+        /* Body styles for black gradient background */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000, #434343);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Container styles */
+        .container {
+            text-align: center;
+        }
+
+        /* Text box */
+        .textbox {
+            font-size: 20px;
+            padding: 20px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+            word-wrap: break-word;
+        }
+
+        /* Button styles */
+        .button {
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 3D button effect */
+        .button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .button:hover {
+            background-color: #1558b1;
+        }
+
+        /* Tooltip (Copy message) */
+        .tooltip {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <textarea id="textToCopy" class="textbox" rows="4" cols="50">./.pardon r0r0r0r00r1001r01r010r10r0r0r00r0r10010101010rr0r0r00r0herecomesuruserrr0r0r0r00r....///..,,,...,.,,.,.23.4,,,..23,4.,.,234,.</textarea><br>
+        <button class="button" onclick="copyText()">Copy to Clipboard</button>
+        <div id="tooltip" class="tooltip">Copied to clipboard!</div>
+    </div>
+
+    <script>
+        function copyText() {
+            var copyText = document.getElementById("textToCopy");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text to the clipboard
+            document.execCommand("copy");
+
+            // Show tooltip
+            var tooltip = document.getElementById("tooltip");
+            tooltip.style.display = "block";
+
+            // Hide tooltip after 2 seconds
+            setTimeout(function() {
+                tooltip.style.display = "none";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
